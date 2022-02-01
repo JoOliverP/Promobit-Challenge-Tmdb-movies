@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         --black: #000000;
 
         --gray: #646464;
+        --gray-700: #323232;
 
         --purple: #2D0C5E;
         --light-purple: #5C16C5;
@@ -37,7 +38,6 @@ export const GlobalStyle = createGlobalStyle`
 
     body, input, textarea, button {
         font-family: 'Roboto', sans-serif;
-        font-weight: 400;
     }
 
     h1, h2, h3, h4, h5, h6, strong {
