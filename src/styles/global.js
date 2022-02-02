@@ -12,6 +12,8 @@ export const GlobalStyle = createGlobalStyle`
 
         --purple: #2D0C5E;
         --light-purple: #5C16C5;
+
+        --yellow: #D18000;
     }
 
     * {
@@ -21,11 +23,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        @media (max-with: 1080px) {
+        @media (max-width: 1080px) {
             font-size: 93.75%; 
         }
 
-        @media (max-with: 720px) {
+        @media (max-width: 720px) {
             font-size: 87.5%;
         }
 
@@ -34,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background: var(--background);
         -webkit-font-smoothing: antialiased;
+        color: var(--white);
     }
 
     body, input, textarea, button {
@@ -42,6 +45,7 @@ export const GlobalStyle = createGlobalStyle`
 
     h1, h2, h3, h4, h5, h6, strong {
         font-weight: 700;
+        
     }
 
     button {
