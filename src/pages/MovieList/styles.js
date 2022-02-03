@@ -28,6 +28,7 @@ export const TitleMovie = styled.strong`
     margin-top: 0.5rem;
     font-size: 1rem;
     font-weight: bold;
+    color: var(--black);
 `;
 
 export const DateMovie = styled.p`
