@@ -1,131 +1,24 @@
-import { Container, Content,CardMovie, TitleMovie, DateMovie} from './styles';
-import image1 from '../../assets/image1.svg'
-import image2 from '../../assets/image2.svg'
+import { Container } from './styles';
+import { CardMovie } from '../../components/CardMovie';
+import { useContext } from 'react';
+import { MoviesContext } from '../../hooks/MoviesContext';
+
 export function MovieList() {
-    return (
+    const { movies } = useContext(MoviesContext);
+
+    return (    
         <Container>
-            <Content>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image1} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-                <CardMovie>
-                    <img src={image2} alt="Card filme" />
-                    <TitleMovie>Oi, Alberto</TitleMovie>
-                    <DateMovie>12 NOV 2021</DateMovie>
-                </CardMovie>
-            </Content>
+        { movies.map(movie => (
+            <CardMovie 
+                key={movie.id}
+                title={movie.title} 
+                imagePath={movie.poster_path} 
+                dateRelease={movie.release_date} 
+            />
+            ))
+            
+        }
+           
         </Container>
     )
 }

@@ -37,7 +37,7 @@ export const GenreButton = styled.button`
     height: 2.5rem;
     padding: 0.5rem 1rem;
     
-    margin-left: 0.75rem;
+    margin-left: 0.70rem;
     margin-bottom: 0.75rem;
     border: 0;
     border-radius: 0.25rem;

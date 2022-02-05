@@ -1,24 +1,14 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    display: flex;
-    /* justify-content: center; */
-    flex-wrap: wrap;
-    /* align-items: center; */
-    margin: 1.875rem 7rem;
-
-    gap: 2rem;
-
-    @media (max-width: 720px) {
-        justify-content: center;
-        margin: 2rem 1rem;
-        gap: 1rem;
-    }
-`;
-
-export const CardMovie = styled.div`
+export const Card = styled.div`
+    width: 9.375rem;
+    height: 18.75rem;
+    /* margin: auto; */
     display: flex;
     flex-direction: column;
+    white-space: normal;
+
+    cursor: pointer;
 `;
 
 export const TitleMovie = styled.strong`

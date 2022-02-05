@@ -12,16 +12,31 @@ import {
     PeopleMovieContainer,
     PeopleMovieContent,
     TitlePeople,
-    InfoPeople
+    InfoPeople,
+    ContentMidia,
+    CastTitle,
+    CastContainer,
+    CastCard,
+    NameCast,
+    NameCharacter,
+    TrailerTitle,
+    MovieTrailer,
+    RecommendationsTitle,
+    MovieRecommendationsContainer,
 } from "./styles";
 
 import imgCapa from '../../assets/capafilm.svg';
 import imgAval from '../../assets/avaliacao.svg';
+import imgActor from '../../assets/actor1.svg';
+import imgActor2 from '../../assets/actor2.svg';
+import imgTrailer from '../../assets/trailerimg.svg';
+import image1 from '../../assets/image1.svg'
+import { CardMovie } from "../../components/CardMovie";
+
 export function MovieDetails() {
     return (
         <Container>
-            {/* <Content> */}
-
+            <Content>
             <MovieCover src={imgCapa} alt="capa do filme" />
 
             <MovieDetail>
@@ -65,8 +80,66 @@ export function MovieDetails() {
 
                     </PeopleMovieContainer>
 
-            </MovieDetail>    
-            {/* </Content> */}
+            </MovieDetail> 
+            </Content>
+            <ContentMidia>
+            <CastTitle>Elenco original</CastTitle>   
+            <CastContainer>
+                <CastCard>
+                    <img src={imgActor} alt="ator" />
+                    <NameCast>Ryan Reynouds</NameCast>
+                    <NameCharacter>Deadpool</NameCharacter>
+                </CastCard>
+
+                <CastCard>
+                    <img src={imgActor2} alt="ator" />
+                    <NameCast>Ryan Reynouds</NameCast>
+                    <NameCharacter>Deadpool</NameCharacter>
+                </CastCard>
+
+                <CastCard>
+                    <img src={imgActor} alt="ator" />
+                    <NameCast>Ryan Reynouds</NameCast>
+                    <NameCharacter>Deadpool</NameCharacter>
+                </CastCard>
+
+                <CastCard>
+                    <img src={imgActor2} alt="ator" />
+                    <NameCast>Ryan Reynouds</NameCast>
+                    <NameCharacter>Deadpool</NameCharacter>
+                </CastCard>
+
+                <CastCard>
+                    <img src={imgActor} alt="ator" />
+                    <NameCast>Ryan Reynouds</NameCast>
+                    <NameCharacter>Deadpool</NameCharacter>
+                </CastCard>
+
+                <CastCard>
+                    <img src={imgActor2} alt="ator" />
+                    <NameCast>Ryan Reynouds</NameCast>
+                    <NameCharacter>Deadpool/ Wade Wilson</NameCharacter>
+                </CastCard>
+            
+            </CastContainer>
+            <TrailerTitle>
+                Trailer
+            </TrailerTitle>
+            <MovieTrailer src={imgTrailer} alt="movie" />
+            
+            <RecommendationsTitle>Recomendações</RecommendationsTitle>
+
+            <MovieRecommendationsContainer>
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+                <CardMovie />
+            </MovieRecommendationsContainer>
+            </ContentMidia>
+
+           
         </Container>
     )
 }

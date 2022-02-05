@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
+`;
+
+export const Content = styled.div`
+    display: flex;
     flex-direction: row;
     /* justify-content: center; */
     padding: 4.5rem 7rem;
@@ -10,36 +15,22 @@ export const Container = styled.div`
     background: var(--purple);
     height: 37.5rem;
 
-    @media (max-width: 720px) {
+    @media (max-width: 1200px) {
+       height: auto;
+    }
+
+    @media (max-width: 800px) {
        flex-direction: column;
        justify-content: flex-start;
-       height: auto;
        padding: 2.125rem 1rem;
     }
 `;
-
-// export const Content = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     /* justify-content: center; */
-//     align-items: center;
-    
-//     gap: 2.0625rem;
-
-//     padding: 4.5rem 7rem;
-
-
-//     @media (max-width: 720px) {
-//         flex-wrap: wrap;
-//         padding: 2.125rem 5.375rem;
-//     }
-// `;
 
 export const MovieCover = styled.img`
     width: 23.9375rem;
     height: 35.875rem;
     @media (max-width: 720px) {
-        width: 60%;
+        width: 80%;
         align-self: center;
     }
 `;
@@ -111,4 +102,91 @@ export const InfoPeople = styled.p`
     margin-top: 0.5rem;
     font-size: 0.875rem;
     font-weight: 400;
+`;
+
+export const ContentMidia = styled.div`
+    margin: 3.75rem 7rem;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 720px) {
+        margin: 1rem;
+    }
+`;
+
+export const CastTitle = styled.h1`
+    font-size: 1.75rem;
+    color: var(--black);
+`;
+
+export const CastContainer = styled.div`
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+`;
+export const CastCard = styled.div`
+    /* width: 11.9375rem;    */
+    padding: 0.5rem;
+    background: var(--white);
+
+`;
+export const NameCast = styled.h1`
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--black);
+`;
+export const NameCharacter = styled.p`
+    margin-top: 0.25rem;
+    margin-bottom: 32px;
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 400;
+`;
+
+export const TrailerTitle = styled.h1`
+    margin-top: 2.5rem;
+    font-size: 1.75rem;
+    color: var(--black);
+`;
+
+export const MovieTrailer = styled.img`
+    margin-top: 1.5rem;
+    width: 56.6875rem;
+    height: 31.875rem;
+
+
+    @media (max-width: 800px) {
+        width: auto;
+        height: 80%;
+    }
+`;
+
+export const RecommendationsTitle = styled.h1`
+    margin-top: 4rem;
+    font-size: 1.75rem;
+    color: var(--black);
+`
+
+export const MovieRecommendationsContainer = styled.div`
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    /* align-items: center; */
+    
+    margin: 1.5rem 0.5rem ;
+
+    gap: 2rem;
+
+    @media (max-width: 720px) {
+        margin: 1rem auto 3rem auto ;
+        gap: 1rem;
+    }
+    /* flex-wrap: wrap; */
+    /* gap: 0.5rem; */
 `;
