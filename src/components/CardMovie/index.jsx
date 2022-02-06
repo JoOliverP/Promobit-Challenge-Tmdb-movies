@@ -1,4 +1,6 @@
 import {Card, TitleMovie, DateMovie} from './styles';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/esm/locale';
 
 export function CardMovie(props) {
     return (
@@ -7,11 +9,11 @@ export function CardMovie(props) {
             <TitleMovie>{props.title}</TitleMovie>
             <DateMovie>
             {
-                new Date(props.dateRelease).toLocaleDateString('pt-BR', {
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric'
-                })    
+              format(
+                  new Date(props.dateRelease),
+                  "dd MMM yyyy",
+                  {locale: ptBR}
+              )
             }
             </DateMovie>
         </Card>

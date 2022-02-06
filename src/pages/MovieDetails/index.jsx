@@ -32,17 +32,49 @@ import imgActor2 from '../../assets/actor2.svg';
 import imgTrailer from '../../assets/trailerimg.svg';
 import image1 from '../../assets/image1.svg'
 import { CardMovie } from "../../components/CardMovie";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+import { getYear,format } from "date-fns";
+import { ptBR } from 'date-fns/esm/locale';
 
-export function MovieDetails() {
+export function MovieDetails(props) {
+    const { id }  = useParams();    
+    const [movieDetails, setMovieDetails] = useState([]);
+    
+    useEffect(() => {
+        try {
+            api.get(`movie/${id}?api_key=146396b763924a689540bfc1189f3c63&append_to_response=videos&language=pt-BR`)
+            .then(response => setMovieDetails((response.data)))
+        } catch (error) {
+            console.log(error)
+        }
+            
+    }, []);
+
+    const {title,poster_path,release_date,runtime ,genres, videos} = movieDetails;
+
+    const year = getYear(new Date(release_date));
+
+    const movieHour = Math.floor(runtime/60);
+    const movieMin = runtime % 60;
+
+    // console.log(videos.results[0].key)
+
+    // const dateFormated = format(new Date(release_date), "dd/MM/yyyy");
+
+    // const genresName =  genres.map(genre => (<>, {genre.name}</>))
+
+    
+    // console.log(movieDetails);
     return (
         <Container>
             <Content>
-            <MovieCover src={imgCapa} alt="capa do filme" />
+            <MovieCover src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt="capa do filme" />
 
             <MovieDetail>
-                <TitleMovie>Deadpool (2016)</TitleMovie>
-                <InfoMovie>16 anos * 11/02/2016 (BR) * Ação, Aventura, Comédia, Ficção científica * 1h 47m</InfoMovie>
-
+                <TitleMovie>{title} ({year})</TitleMovie>
+                <InfoMovie>16 anos *  (BR) * {} * {movieHour}h {movieMin}m</InfoMovie>
                 <Assessment>
                     <ImageAssessment src={imgAval}  />
                     <p>Avaliação dos <br /> usuários</p>
@@ -50,7 +82,7 @@ export function MovieDetails() {
                 
 
                 <Synopsis>Sinopse</Synopsis>
-                <TextSynopsis>Baseado no anti-herói não convencional da Marvel Comics, Deadpool conta a história da origem do ex-agente das Forças Especiais que se tornou o mercenário Wade Wilson. Depois de ser submetido a um desonesto experimento que o deixa com poderes de cura acelerada, Wade adota o alter ego de Deadpool. Armado com suas novas habilidades e um senso de humor negro e distorcido, Deadpool persegue o homem que quase destruiu sua vida.</TextSynopsis>
+                <TextSynopsis>{movieDetails.overview}</TextSynopsis>
             
                     <PeopleMovieContainer>
                         <PeopleMovieContent>
@@ -125,21 +157,14 @@ export function MovieDetails() {
             <TrailerTitle>
                 Trailer
             </TrailerTitle>
-            <MovieTrailer src={imgTrailer} alt="movie" />
+            {/* <MovieTrailer src={`https://www.youtube.com/watch?v=${videos.results[0].key}`}/> */}
             
             <RecommendationsTitle>Recomendações</RecommendationsTitle>
 
-            <MovieRecommendationsContainer>
+            {/* <MovieRecommendationsContainer>
                 <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-                <CardMovie />
-            </MovieRecommendationsContainer>
+            </MovieRecommendationsContainer> */}
             </ContentMidia>
-
-           
         </Container>
     )
 }

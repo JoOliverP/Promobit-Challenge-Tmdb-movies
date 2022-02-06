@@ -1,15 +1,11 @@
+import { useContext } from 'react';
+import { MoviesContext } from '../../hooks/MoviesContext';
+import { IoCloseCircleSharp } from 'react-icons/io5';
 import { Container, Content, GenreButton, FilterContainer } from './styles';
-import { IoCloseCircleSharp } from 'react-icons/io5'
-import { useEffect, useState } from 'react';
-import { api } from '../../services/api';
+
 
 export function GenresFilter(){
-    const [genres, setGenres] = useState([]);
-
-    useEffect(() => {
-        api.get('genre/movie/list?api_key=146396b763924a689540bfc1189f3c63&language=pt-BR')
-            .then(response => setGenres(response.data.genres));
-    },[])
+    const {genres,filters,handleFilterGenres } = useContext(MoviesContext);
 
     return (
         <Container>
@@ -18,9 +14,21 @@ export function GenresFilter(){
 
                 <p>FILTRE POR:</p>
                 {genres.map(genre => (
-                    <GenreButton key={genre.id} type="button" marked={false}>
+                    <GenreButton 
+                        key={genre.id} 
+                        type="button" 
+                        marked={filters.includes(genre.id)}
+                        onClick={() => handleFilterGenres(genre.id)}
+                    >
                         {genre.name}
-                    {/* <IoCloseCircleSharp color="#FFF" /> */}
+                        {
+                            filters.includes(genre.id) ?
+                            (
+                                <IoCloseCircleSharp color="#FFF" />
+                            ) : (
+                                <></>
+                            )
+                        }
                     </GenreButton>
                 ))
                 }

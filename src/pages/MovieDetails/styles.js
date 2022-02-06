@@ -155,7 +155,7 @@ export const TrailerTitle = styled.h1`
     color: var(--black);
 `;
 
-export const MovieTrailer = styled.img`
+export const MovieTrailer = styled.video`
     margin-top: 1.5rem;
     width: 56.6875rem;
     height: 31.875rem;
