@@ -30,7 +30,7 @@ export const MovieCover = styled.img`
     width: 23.9375rem;
     height: 35.875rem;
     @media (max-width: 720px) {
-        width: 80%;
+        /* width: 80%; */
         align-self: center;
     }
 `;
@@ -131,9 +131,16 @@ export const CastContainer = styled.div`
 `;
 export const CastCard = styled.div`
     /* width: 11.9375rem;    */
+    margin-bottom: 1rem;
     padding: 0.5rem;
+    white-space: normal;
+    border-radius: 0.25rem;
+    box-shadow: 0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
     background: var(--white);
 
+    img {
+        width: 10.938rem;
+    }
 `;
 export const NameCast = styled.h1`
     margin-top: 1rem;
@@ -143,7 +150,6 @@ export const NameCast = styled.h1`
 `;
 export const NameCharacter = styled.p`
     margin-top: 0.25rem;
-    margin-bottom: 32px;
     color: var(--black);
     font-size: 1rem;
     font-weight: 400;
@@ -155,7 +161,7 @@ export const TrailerTitle = styled.h1`
     color: var(--black);
 `;
 
-export const MovieTrailer = styled.video`
+export const MovieTrailer = styled.div`
     margin-top: 1.5rem;
     width: 56.6875rem;
     height: 31.875rem;
@@ -184,6 +190,7 @@ export const MovieRecommendationsContainer = styled.div`
     gap: 2rem;
 
     @media (max-width: 720px) {
+        justify-content: center;
         margin: 1rem auto 3rem auto ;
         gap: 1rem;
     }

@@ -25,32 +25,43 @@ import {
     MovieRecommendationsContainer,
 } from "./styles";
 
-import imgCapa from '../../assets/capafilm.svg';
 import imgAval from '../../assets/avaliacao.svg';
-import imgActor from '../../assets/actor1.svg';
-import imgActor2 from '../../assets/actor2.svg';
-import imgTrailer from '../../assets/trailerimg.svg';
-import image1 from '../../assets/image1.svg'
+
 import { CardMovie } from "../../components/CardMovie";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { getYear,format } from "date-fns";
 import { ptBR } from 'date-fns/esm/locale';
+import ReactPlayer from 'react-player/youtube';
 
 export function MovieDetails(props) {
     const { id }  = useParams();    
     const [movieDetails, setMovieDetails] = useState([]);
+    const [movieRecommendations, setMovieRecommendations] = useState([]);
+    const [realeseDate,setRealeaseDate] = useState([]);
+    const [castInfo, setCastInfo] = useState([]);
     
     useEffect(() => {
         try {
             api.get(`movie/${id}?api_key=146396b763924a689540bfc1189f3c63&append_to_response=videos&language=pt-BR`)
             .then(response => setMovieDetails((response.data)))
+            
+            api.get(`movie/${id}/release_dates?api_key=146396b763924a689540bfc1189f3c63`)
+            .then(response => setRealeaseDate((response.data.results)))
+            
+            api.get(`movie/${id}/credits?api_key=146396b763924a689540bfc1189f3c63&language=pt-BR`)
+            .then(response => setCastInfo(response.data.cast))
+
+            api.get(`movie/${id}/recommendations?api_key=146396b763924a689540bfc1189f3c63&language=en-US&page=1`)
+            .then(response => setMovieRecommendations(response.data.results))
         } catch (error) {
             console.log(error)
         }
             
     }, []);
+    
+    // console.log(realeseDate[32].release_dates[0].certification);
 
     const {title,poster_path,release_date,runtime ,genres, videos} = movieDetails;
 
@@ -90,26 +101,6 @@ export function MovieDetails(props) {
                             <InfoPeople>Characters</InfoPeople>
                         </PeopleMovieContent>
 
-                        <PeopleMovieContent>
-                            <TitlePeople>Rob Liefeld</TitlePeople>
-                            <InfoPeople>Characters</InfoPeople>
-                        </PeopleMovieContent>
-
-                        <PeopleMovieContent>
-                            <TitlePeople>Rob Liefeld</TitlePeople>
-                            <InfoPeople>Characters</InfoPeople>
-                        </PeopleMovieContent>
-
-                        <PeopleMovieContent>
-                            <TitlePeople>Rob Liefeld</TitlePeople>
-                            <InfoPeople>Characters</InfoPeople>
-                        </PeopleMovieContent>
-
-                        <PeopleMovieContent>
-                            <TitlePeople>Rob Liefeld</TitlePeople>
-                            <InfoPeople>Characters</InfoPeople>
-                        </PeopleMovieContent>
-
                     </PeopleMovieContainer>
 
             </MovieDetail> 
@@ -117,53 +108,40 @@ export function MovieDetails(props) {
             <ContentMidia>
             <CastTitle>Elenco original</CastTitle>   
             <CastContainer>
-                <CastCard>
-                    <img src={imgActor} alt="ator" />
-                    <NameCast>Ryan Reynouds</NameCast>
-                    <NameCharacter>Deadpool</NameCharacter>
-                </CastCard>
-
-                <CastCard>
-                    <img src={imgActor2} alt="ator" />
-                    <NameCast>Ryan Reynouds</NameCast>
-                    <NameCharacter>Deadpool</NameCharacter>
-                </CastCard>
-
-                <CastCard>
-                    <img src={imgActor} alt="ator" />
-                    <NameCast>Ryan Reynouds</NameCast>
-                    <NameCharacter>Deadpool</NameCharacter>
-                </CastCard>
-
-                <CastCard>
-                    <img src={imgActor2} alt="ator" />
-                    <NameCast>Ryan Reynouds</NameCast>
-                    <NameCharacter>Deadpool</NameCharacter>
-                </CastCard>
-
-                <CastCard>
-                    <img src={imgActor} alt="ator" />
-                    <NameCast>Ryan Reynouds</NameCast>
-                    <NameCharacter>Deadpool</NameCharacter>
-                </CastCard>
-
-                <CastCard>
-                    <img src={imgActor2} alt="ator" />
-                    <NameCast>Ryan Reynouds</NameCast>
-                    <NameCharacter>Deadpool/ Wade Wilson</NameCharacter>
-                </CastCard>
-            
+                {
+                    castInfo.map(cast => (
+                        <CastCard key={cast.id}>
+                        <img src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`} alt="ator" />
+                        <NameCast>{cast.name}</NameCast>
+                        <NameCharacter>{cast.character}</NameCharacter>
+                        </CastCard>
+                    ))
+                }
             </CastContainer>
             <TrailerTitle>
                 Trailer
             </TrailerTitle>
-            {/* <MovieTrailer src={`https://www.youtube.com/watch?v=${videos.results[0].key}`}/> */}
-            
-            <RecommendationsTitle>Recomendações</RecommendationsTitle>
+{/* 
+            <MovieTrailer>
+                <ReactPlayer width='100%' height='100%' url={`https://www.youtube.com/watch?v=${videos.results[0].key}`} controls={true} />
+            </MovieTrailer> */}
 
-            {/* <MovieRecommendationsContainer>
-                <CardMovie />
-            </MovieRecommendationsContainer> */}
+            <RecommendationsTitle>Recomendações</RecommendationsTitle>
+            <MovieRecommendationsContainer>
+               {
+                   movieRecommendations.map(movie => (
+                    <Link style={{textDecoration:'none'}} key={movie.id} to={`/moviedetails/${movie.id}`}>
+                        <CardMovie 
+                           
+                            title={movie.title} 
+                            imagePath={movie.poster_path} 
+                            dateRelease={movie.release_date} 
+                        >
+                        </CardMovie>
+                    </Link>
+                    ))
+               }
+            </MovieRecommendationsContainer>
             </ContentMidia>
         </Container>
     )

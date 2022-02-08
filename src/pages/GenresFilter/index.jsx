@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { MoviesContext } from '../../hooks/MoviesContext';
 import { IoCloseCircleSharp } from 'react-icons/io5';
-import { Container, Content, GenreButton, FilterContainer } from './styles';
+import { Container, Content, GenreButton} from './styles';
 
 
 export function GenresFilter(){
@@ -32,7 +32,6 @@ export function GenresFilter(){
                     </GenreButton>
                 ))
                 }
-           
             </Content>
         </Container>
     )

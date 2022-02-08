@@ -18,7 +18,7 @@ export function MoviesProvider(props) {
         
             api.get('genre/movie/list?api_key=146396b763924a689540bfc1189f3c63&language=pt-BR')
             .then(response => setGenres(response.data.genres)); 
-            console.log(movies);
+            // console.log(movies);
         } catch (error) {
             console.log(error);
         }
@@ -63,7 +63,6 @@ export function MoviesProvider(props) {
         }    
         // console.log(filters);
     }
-
 
     return (
         <MoviesContext.Provider

@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { MoviesContext } from '../../hooks/MoviesContext';
 import { CardMovie } from '../../components/CardMovie';
-import { Container,Content,StyledPaginateContainer } from './styles';
 import { GenresFilter } from '../GenresFilter/index';
 import ReactPaginate from 'react-paginate';
-import { Link, useParams } from 'react-router-dom';
 
+import { Container,Content,StyledPaginateContainer } from './styles';
 export function MovieList() {
     const { movies,filteredMovies, setPage } = useContext(MoviesContext);
     return (
@@ -39,25 +39,29 @@ export function MovieList() {
                 )    
             }
             </Content>
-
-                <StyledPaginateContainer>
-                <ReactPaginate
-                    previousLabel="<"
-                    nextLabel=">"
-                    breakLabel="..."
-                    breakClassName="break-me"
-                    pageCount={18}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={pagination => {
-                        // console.log(pagination)
-                        setPage(pagination.selected + 1)
-                    }}
-                    containerClassName="pagination"
-                    activeClassName="active"
-                />
-                </StyledPaginateContainer>
-            
+                {
+                    filteredMovies.length > 0 ? (
+                        <></>
+                    ) : (
+                    <StyledPaginateContainer>
+                        <ReactPaginate
+                            previousLabel="<"
+                            nextLabel=">"
+                            breakLabel="..."
+                            breakClassName="break-me"
+                            pageCount={18}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={pagination => {
+                                // console.log(pagination)
+                                setPage(pagination.selected + 1)
+                            }}
+                            containerClassName="pagination"
+                            activeClassName="active"
+                        />
+                    </StyledPaginateContainer>
+                    )
+                }
         </Container>
         </>
     )
