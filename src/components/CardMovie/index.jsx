@@ -1,19 +1,23 @@
 import {Card, TitleMovie, DateMovie} from './styles';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/esm/locale';
-
+import imgNotFound from '../../assets/notfound.png';
 export function CardMovie(props) {
     return (
         <Card>
-            <img src={`https://image.tmdb.org/t/p/original/${props.imagePath}`} alt={props.title} />
-            <TitleMovie>{props.title}</TitleMovie>
+            {props.imagePath ? (
+                <img src={`https://image.tmdb.org/t/p/original/${props.imagePath ? props.imagePath : ""}`} alt={props.title} />
+            ) : (
+                <img src={imgNotFound}  />
+            )}
+            <TitleMovie>{props.title? props.title : ""}</TitleMovie> 
             <DateMovie>
             {
-              format(
+             props.dateRelease ? format(
                   new Date(props.dateRelease),
                   "dd MMM yyyy",
                   {locale: ptBR}
-              )
+              ) : ""
             }
             </DateMovie>
         </Card>

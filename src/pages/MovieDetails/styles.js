@@ -166,10 +166,18 @@ export const MovieTrailer = styled.div`
     width: 56.6875rem;
     height: 31.875rem;
 
+    img {
+        width: 90%;
+    }
+
+    @media (max-width: 900px) {
+        width: auto;
+        height: 300px;
+    }
 
     @media (max-width: 800px) {
         width: auto;
-        height: 80%;
+        height: 300px;
     }
 `;
 
