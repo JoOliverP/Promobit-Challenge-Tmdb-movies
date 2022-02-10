@@ -14,7 +14,7 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 - [TMDB-API](https://developers.themoviedb.org/3/getting-started/introduction)
 
 ### ⚙️ Deploy Vercel
-Acesse aqui [Vercel](https://promobit-challenge-tmdb-movies.vercel.app/)  para ver a aplicação.
+Acesse aqui o deploy da aplicação no [Vercel](https://promobit-challenge-tmdb-movies.vercel.app/).
 
 ###  🎲 Pré-requisitos
 
