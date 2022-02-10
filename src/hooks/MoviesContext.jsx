@@ -45,10 +45,6 @@ export function MoviesProvider(props) {
         
     }, [filters]);
 
-    // console.log(filters);
-
-
-
     function handleFilterGenres(genre) {
        if (filters.includes(genre)){
             const index = filters.indexOf(genre);

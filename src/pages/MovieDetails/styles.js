@@ -29,6 +29,9 @@ export const Content = styled.div`
 export const MovieCover = styled.img`
     width: 23.9375rem;
     height: 35.875rem;
+
+    filter: drop-shadow(0px 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+    border-radius: 0.5rem;
     @media (max-width: 720px) {
         /* width: 80%; */
         align-self: center;
@@ -90,7 +93,7 @@ export const PeopleMovieContainer = styled.div`
     gap: 33px;
 `;
 
-export const PeopleMovieContent = styled.h1`
+export const PeopleMovieContent = styled.div`
     margin-left: 2rem;
 `;
 
